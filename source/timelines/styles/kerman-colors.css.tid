@@ -1,0 +1,25 @@
+created: 20190728113300986
+modified: 20201119125120623
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/timelines/styles/kerman-colors.css
+type: text/vnd.tiddlywiki
+
+<$list filter="[all[shadows+tiddlers]prefix[$:/plugins/kookma/timelines/styles/colors/]] -[<currentTiddler>]" variable="type">
+
+<$vars 
+ selector={{{[<type>getindex[class]addprefix[.kk-tl-kerman-]]}}} 
+ color={{{[<type>getindex[color]]}}} 
+ background-color={{{[<type>getindex[background]]}}} 
+ border-color={{{[<type>getindex[border]]}}} 
+ link-color={{{[<type>getindex[link]]}}} 
+ >
+ 
+<<selector>> ul li{color:<<color>>; background-color: <<background-color>>; border-color: <<border-color>>;	}		
+<<selector>> ul:before{border-color:<<border-color>>;}
+<<selector>> ul li > span{border-color:<<border-color>>;}
+<<selector>> ul li > span:before, 
+<<selector>> ul li > span:after{background:<<background-color>>; border-color:<<border-color>>;}
+<<selector>> .item-timedate span{color:<<color>>;}
+<<selector>> .item-link {color:<<link-color>>;}
+</$vars>
+</$list>

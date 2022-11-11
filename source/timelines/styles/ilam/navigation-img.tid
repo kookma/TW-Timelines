@@ -1,0 +1,10 @@
+created: 20190731214015056
+modified: 20201119125120587
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/timelines/styles/ilam/navigation-img
+type: text/vnd.tiddlywiki
+
+.kk-tl-ilam .navigation::after {
+/*background: url(img/cd-arrow.svg) no-repeat 0 0*/
+background: url(<<datauri "$:/plugins/kookma/timelines/images/right-arrow">>) no-repeat 0 0;
+}

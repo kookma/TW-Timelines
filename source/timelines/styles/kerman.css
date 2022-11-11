@@ -1,0 +1,108 @@
+/*The Kerman main stylesheet*/
+.kk-tl-kerman{
+    margin:0 10%;
+    padding: 10px 0 40px 60px
+}
+
+.kk-tl-kerman > ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    transition: all 0.5s linear;
+    top:0
+}
+
+.kk-tl-kerman > ul:last-of-type{
+    top:40px
+ }
+
+.kk-tl-kerman > ul:before{
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:30px;
+    border-width:1px;
+    border-style:dashed;
+}
+
+
+.kk-tl-kerman > ul > li{
+    margin: 20px 60px 60px;
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 10px;
+    line-height: 20px;
+    width: 65%
+}
+
+
+.kk-tl-kerman > ul > li > span{
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:-30px;
+	border-width:1px;
+    border-style:solid;
+}
+
+
+.kk-tl-kerman > ul > li > span:before,
+.kk-tl-kerman > ul > li > span:after{
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    left:-8.5px;
+    border-width:2px;
+    border-style:solid;
+}
+
+
+.kk-tl-kerman .item-title{
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 5px
+}
+
+
+.kk-tl-kerman .item-body:first-letter{
+  text-transform: capitalize;
+	line-height: 1.7
+}
+
+.kk-tl-kerman .item-footer{
+    margin-top: 10px;
+    text-transform: capitalize;
+    font-style: italic;
+    text-align: right;
+    margin-right: 20px
+}
+
+
+.kk-tl-kerman .item-timedate span{
+    position: absolute;
+    font-size:0.9rem;
+    font-weight: bold;
+}
+/*   */
+
+.kk-tl-kerman .item-link{
+    font-weight:700;
+}
+
+
+/* date time */
+.kk-tl-kerman .item-timedate span:first-child {left:-6.5rem; top:-12px;}
+.kk-tl-kerman .item-timedate span:last-child  {left:-4.6rem; bottom:-9px;}
+
+.kk-tl-kerman > ul > li > span:before{top:-10px}
+.kk-tl-kerman > ul > li > span:after{bottom:-10px;}

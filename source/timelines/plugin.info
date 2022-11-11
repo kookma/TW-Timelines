@@ -1,0 +1,12 @@
+{
+    "title": "$:/plugins/kookma/timelines",
+    "name": "Timelines",
+    "description": "Graphical representation of a period of time",
+    "author": "Mohammad Rahmani",
+    "version": "1.2.0",
+    "core-version": ">=5.2.3",
+    "source": "https://github.com/kookma/TW-Timelines",
+    "list": "readme license history",
+    "dependents": "",
+    "plugin-type": "plugin"
+}

@@ -1,0 +1,54 @@
+.kk-tl-tehran{
+  width:60%;
+  margin: 10px auto;
+	box-sizing:border-box;
+}
+
+.kk-tl-tehran-content{
+  padding:15px;
+  min-height:140px;
+ /* border-width:1px;
+  border-style:dotted; */
+}
+
+.kk-tl-tehran ul{
+  padding:0;
+  text-align:center;
+}
+.kk-tl-tehran li {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  margin: 8px 5px;
+}
+
+/*Extra setting */
+.kk-tl-tehran .tc-btn-invisible { outline:none; }
+
+
+/* Colors 
+
+.kk-tl-tehran-textbox{
+	border-color:dodgerblue;
+}
+.kk-tl-tehran li {
+	  color: white;
+	  background: dodgerblue;
+}
+.kk-tl-tehran-active {
+  background: dodgerblue;
+}
+
+.kk-tl-tehran-active~li {
+  background: lightblue;
+}
+
+.kk-tl-tehran-active~li::before {
+  background: lightblue;
+}
+
+*/

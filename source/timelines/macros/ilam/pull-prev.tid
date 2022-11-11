@@ -1,0 +1,24 @@
+created: 20190802101726795
+modified: 20221111200657656
+tags: $:/tags/Macro
+title: $:/plugins/kookma/timelines/macros/ilam/pull-prev
+type: text/vnd.tiddlywiki
+
+\define __tlIlam-PullPrevious()
+<!-- number of items displayed on screen: 3 -->
+<$vars
+ first-item={{{ [list<container>first[1]] }}}
+ last-item={{{ [list<container>last[1]] }}}
+>
+
+<$list filter="[enlist<filter>allbefore:include<first-item>last[3]count[]] -1 -2 ~[[::false]]" variable=result>
+   <$list filter="[<result>prefix[::false]]" variable=ignore>
+        <$action-listops $tiddler=<<container>> $filter="[enlist<filter>first[3]]"/>
+   </$list>
+   <$list filter="[<result>!prefix[::false]]" variable=case>
+        <$action-listops $tiddler=<<container>> $filter="[enlist<filter>allbefore:include<first-item>last[3]] ~[enlist<filter>first[3]]"/>   
+   </$list> 
+</$list>
+
+</$vars>
+\end

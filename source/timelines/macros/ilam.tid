@@ -1,0 +1,109 @@
+created: 20190807174733718
+modified: 20221111200527224
+tags: 
+title: $:/plugins/kookma/timelines/macros/ilam
+type: text/vnd.tiddlywiki
+
+\define __tl-ilam(filter, limit:10, template:"", footer:"footer", class, date:"modified", stateTiddler:"", dateformat:"YYYY")
+<!-- dateformat here is a hidden argument. It can be changed to "0DD mmm YYYY" if the eventlength is set to 32.
+See $:/plugins/kookma/timelines/macros/ilamleft-pos -->
+
+<$set name=filter filter="[subfilter<__filter__>] :sort:date[get<__date__>] :and[limit[$limit$]]">
+<$set name=container value=<<qualify """$:/state-tl/ilam-$stateTiddler$""">> emptyValue=<<__tlIlam-CreateStateTiddler>> >
+<$set name=selected-item  value={{{[<container>get[text]] ~[enlist<filter>first[]]}}} >
+
+<div class="kk-tl-ilam kk-tl-ilam-container">
+<div class="dates">
+<div class="line">
+
+<ol>
+
+<$list filter="[list<container>]" variable="entry"> <!-- main list -->
+
+<$list filter="[enlist<filter>allbefore<selected-item>match<entry>]"><!-- all before selected item -->
+<$wikify name="stleft" text=<<__tlIlam-LeftPosition>> >
+<li>
+<$button class="tc-btn-invisible date date--older-event" style=<<stleft>> actions=<<__tlIlam-changeit>> >
+<<__tlIlam_ShowEventDate>>
+</$button>
+</li>
+</$wikify>
+</$list>
+
+<$list filter="[<entry>match<selected-item>]"><!-- the selected item -->
+<$wikify name="stleft" text=<<__tlIlam-LeftPosition>> >
+<li>
+<$button class="tc-btn-invisible date date--selected" style=<<stleft>> actions=<<__tlIlam-changeit>> >
+<<__tlIlam_ShowEventDate>> 
+</$button>
+</li>
+</$wikify>
+</$list>
+
+<$list filter="[enlist<filter>allafter<selected-item>match<entry>]"><!-- all after selected item -->
+<$wikify name="stleft" text=<<__tlIlam-LeftPosition>> >
+<$button class="tc-btn-invisible date" style=<<stleft>> >
+<<__tlIlam-changeit>><<__tlIlam_ShowEventDate>> 
+</$button>
+</$wikify>
+</$list>
+
+</$list><!--- main list -->
+
+</ol>
+
+<$wikify name="stlength" text=<<__tlIlam-LineLength>> ><!-- the filling line -->
+<span class="filling-line" style=<<stlength>> aria-hidden="xtrue"></span>
+</$wikify>
+
+</div><!--line-->
+</div><!-- dates-->
+
+<ul><!-- arrow btns-->
+<li>
+<$button class="tc-btn-invisible text-replace navigation navigation--prev" actions=<<__tlIlam-PullPrevious>> >
+Prev
+</$button>
+</li>
+<li>
+<$button class="tc-btn-invisible text-replace navigation navigation--next" actions=<<__tlIlam-PullNext>> >
+Next
+</$button>
+</li>
+</ul>
+</div><!-- container-->
+
+<$set name=templateTiddler value=<<__template__>> emptyValue="$:/plugins/kookma/timelines/templates/ilam" >
+<div class="kk-tl-ilam-content kk-tl-ilam-$class$"><!--display contents-->
+<$tiddler tiddler=<<selected-item>> >
+<$transclude tiddler=<<templateTiddler>> mode="block"/>
+</$tiddler>
+</div>
+</$set>
+
+</$set>
+</$set>
+</$set>
+\end
+
+
+\define __tlIlam-changeit() <$action-setfield $tiddler=<<container>> text=<<currentTiddler>>/>
+
+
+\define __tlIlam_ShowEventDate()
+<$list filter="[<__dateformat__>match[YYYY]]" variable=ignore>
+<$view field=<<__date__>> format=date template="YYYY" /> 
+</$list>
+<$list filter="[<__dateformat__>match[0DD mmm YYYY]]" variable=ignore>
+<$view field=<<__date__>> format=date template="0DD mmm YYYY" /> 
+</$list>
+<$list filter="[<__dateformat__>match[mmm DDth]]" variable=ignore>
+<$view field=<<__date__>> format=date template="mmm DDth" /> 
+</$list>
+\end
+
+\define __tlIlam-CreateStateTiddler() 
+<!-- the statet tiddler intentionally prefixed with $:/state-tl to remain after closing the wiki. On 
+Node.js closing and reopening wiki will remove all $:/state tiddlers -->
+<<qualify """$:/state-tl/ilam-$(currentTiddler)$""">>
+\end

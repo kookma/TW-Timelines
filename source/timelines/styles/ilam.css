@@ -1,0 +1,209 @@
+/* Container */
+:root {
+  --max-width-large: 800px;
+}
+
+.kk-tl-ilam {
+    position: relative;
+    height: 100px;
+    max-width: var(--max-width-large);
+}
+
+.kk-tl-ilam-container {
+    width: calc(100% - 1.25em);
+    margin-left: auto;
+    margin-right: auto
+}
+
+/* event content */
+.kk-tl-ilam-content {
+  max-width: var(--max-width-large);
+  margin-left: auto;
+  margin-right: auto
+}
+
+/*added later*/
+.cl.kk-tl-ilam {
+ background-color: hsl(0, 0%, 97%);
+}
+.kk-tl-ilam *::before,
+.kk-tl-ilam *::after,
+.kk-tl-ilam *{
+  box-sizing:border-box;
+}
+
+/* list ordered and unordered */
+.kk-tl-ilam ul, 
+.kk-tl-ilam ol{
+  list-type: none;
+}
+.kk-tl-ilam ul{
+    font-size:0.85em
+}
+.kk-tl-ilam li{
+display:inline-block
+}
+
+/*line axis events placed on that*/
+.kk-tl-ilam .line {
+    position: absolute;
+    z-index: 1;
+      width:100%;
+    left: 0;
+    top: 49px;
+    height: 2px;
+    background-color: hsl(0, 0%, 87.3%);
+    transition: transform 0.4s;
+}
+
+/* filling line */
+.kk-tl-ilam .filling-line {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: hsl(74, 93%, 32%);
+   -webkit-transform-origin: left center;
+   -ms-transform-origin: left center;
+    transform-origin: left center;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s
+}
+
+/* dates */
+.kk-tl-ilam .dates {
+    position: relative;
+    height: 100%;
+    margin: 0 40px;
+    overflow: hidden
+}
+
+.kk-tl-ilam .dates::after,
+.kk-tl-ilam .dates::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    height: 100%;
+    width: 20px
+}
+
+.kk-tl-ilam .dates::before {
+    left: 0;
+    background: linear-gradient(to right, hsl(0, 0%, 100%), hsla(0, 0%, 100%, 0));
+}
+
+.kk-tl-ilam .dates::after {
+    right: 0;
+    background: linear-gradient(to left, hsl(0, 0%, 100%), hsla(0, 0%, 100%, 0));
+}
+
+/* date item */
+.kk-tl-ilam .date {
+    position: absolute;
+    bottom: 0; 
+    z-index: 2;
+    text-align: center;
+    font-size: 0.8em;
+    padding-bottom: 0.75em;
+    color: hsl(0, 0%, 22%);
+    user-select: none;
+    text-decoration: none
+}
+
+.kk-tl-ilam .date::after {
+    content: '';
+    position: absolute;
+ /*   left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);*/
+    bottom: -5px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: hsl(0, 0%, 87.3%);
+    background-color: hsl(0, 0%, 97%);
+    transition: background-color 0.3s, border-color .3s
+}
+
+.kk-tl-ilam .date:hover::after {
+    background-color: hsl(74, 93%, 32%);
+    border-color: hsl(74, 93%, 32%);
+}
+
+/* date older event */
+.kk-tl-ilam .date--older-event::after {
+    border-color: hsl(74, 93%, 32%);
+}
+
+/* date selected */
+.kk-tl-ilam .date--selected {
+    pointer-events: none
+}
+
+.kk-tl-ilam .date--selected::after {
+    background-color: hsl(74, 93%, 32%);
+    border-color: hsl(74, 93%, 32%);
+}
+
+/* navigation buttons */
+.kk-tl-ilam .navigation {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: hsl(0, 0%, 87.3%);
+    transition: border-color 0.3s
+}
+
+.kk-tl-ilam .navigation::after {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.kk-tl-ilam .navigation:hover {
+    border-color: hsl(74, 93%, 32%)
+}
+
+.kk-tl-ilam .navigation--prev {
+    left: 0;
+    -webkit-transform: translateY(-50%) rotate(180deg);
+    -ms-transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%) rotate(180deg)
+}
+
+
+.kk-tl-ilam .navigation--next {
+    right: 0
+}
+
+/*text replace*/
+.kk-tl-ilam .text-replace {
+    overflow: hidden;
+    color: transparent;
+    text-indent: 100%;
+    white-space: nowrap
+}
+
+/* remove blue border from buttons */
+.kk-tl-ilam .tc-btn-invisible { outline:none; }
+

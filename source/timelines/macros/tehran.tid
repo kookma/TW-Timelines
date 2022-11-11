@@ -1,0 +1,51 @@
+created: 20190730190751458
+modified: 20201119192902023
+tags: $:/tags/Timelines/Macro
+title: $:/plugins/kookma/timelines/macros/tehran
+type: text/vnd.tiddlywiki
+
+\define __tl-tehran(filter, limit:10, template:"", footer:"footer", class:"primary", date:"modified", stateTiddler)
+<!-- creates a horizontal sequence -->
+
+<$set name=container value=<<qualify """$:/state/tl/tehran-$stateTiddler$""">> emptyValue=<<__tlTehran-CreateStateTiddler>> >
+<$set name=selected-item  value={{{[<container>get[text]] ~[subfilter<__filter__>first[]]}}} >
+
+<div class="kk-tl-tehran kk-tl-tehran-$class$">
+
+<$set name=templateTiddler value=<<__template__>> emptyValue="$:/plugins/kookma/timelines/templates/tehran" >
+<div class="kk-tl-tehran-content"><!-- display content of selected tiddler -->
+<$list filter="[<container>get[text]] ~[<selected-item>]" template=<<templateTiddler>> />
+</div>
+</$set>
+
+<ul>
+<$list filter="[subfilter<__filter__>limit[$limit$]]" variable="entry"><!-- main list -->
+<$list filter="[<entry>match<selected-item>] ~[[::not-selected]]" variable=choice>
+<$list filter="[<choice>match<selected-item>]">
+<li class="kk-tl-tehran-active">
+<$button class="tc-btn-invisible"><<__tlTehran-changeit>>
+<$count filter='[subfilter<__filter__>allbefore:include<entry>]'/>
+</$button>
+</li>
+</$list>
+<$list filter="[<choice>match[::not-selected]]">
+<li>
+<$button class="tc-btn-invisible"><<__tlTehran-changeit>>
+<$count filter='[subfilter<__filter__>allbefore:include<entry>]'/>
+</$button>
+</li>
+</$list>
+</$list>
+</$list>
+</ul>
+
+</div>
+</$set>
+</$set>
+\end
+
+\define __tlTehran-changeit()
+<$action-setfield $tiddler=<<container>> text=<<entry>>/>
+\end
+
+\define __tlTehran-CreateStateTiddler() <<qualify """$:/state/tl/tehran-$(currentTiddler)$""">>

@@ -1,0 +1,9 @@
+code-body: yes
+created: 20190804113047364
+modified: 20221111145323847
+title: $:/plugins/kookma/timelines/templates/kerman
+type: text/vnd.tiddlywiki
+
+<div class="item-title"><$link class="item-link"><$text text=<<currentTiddler>>/></$link></div>
+<div class="item-body"><$transclude mode="block"/></div>
+<div class="item-footer"><$view field=<<__footer__>>/></div>

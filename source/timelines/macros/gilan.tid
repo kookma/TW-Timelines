@@ -1,0 +1,21 @@
+created: 20190728030350471
+modified: 20201119195217475
+tags: 
+title: $:/plugins/kookma/timelines/macros/gilan
+type: text/vnd.tiddlywiki
+
+\define __tl-gilan(filter, limit:10, template:"", footer:"footer", class, date:"modified")
+<$set name=templateTiddler value=<<__template__>> emptyValue="$:/plugins/kookma/timelines/templates/gilan" >
+<div class="kk-tl-gilan">
+
+<$list filter="[subfilter<__filter__>limit[$limit$]]" emptyMessage="Timeline: no tiddler found or wrong filter is passed!" >
+<div class="item kk-tl-gilan-$class$"> <!--display content-->
+
+<$transclude tiddler=<<templateTiddler>> mode="block"/>
+
+</div>
+</$list>
+
+</div>
+</$set>
+\end
