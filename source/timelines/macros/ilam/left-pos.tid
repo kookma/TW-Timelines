@@ -1,4 +1,4 @@
-tags: $:/tags/Macro
+tags: $:/tags/Timelines/Ilam
 title: $:/plugins/kookma/timelines/macros/ilam/left-pos
 type: text/vnd.tiddlywiki
 
@@ -10,9 +10,6 @@ type: text/vnd.tiddlywiki
 <$list filter="[<__dateformat__>match[0DD mmm YYYY]]" variable=ignore>32</$list>
 <$list filter="[<__dateformat__>match[mmm DDth]]" variable=ignore>20</$list>
 \end
-
-
-
 
 
 \define __tlIlam-LeftPosition() 

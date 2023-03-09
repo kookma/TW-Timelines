@@ -1,8 +1,9 @@
-tags: 
-title: $:/plugins/kookma/timelines/macros/kerman
+tags: $:/tags/Macro
+title: $:/plugins/kookma/timelines/macros/timeline-vertical
 type: text/vnd.tiddlywiki
 
-\define __tl-kerman(filter, limit:10, template:"", footer:"footer", class:"light", date:"modified", dateformat:"mmm 0DDth YYYY")
+\define timeline-vertical(filter, limit:10, template:"", footer:"footer", class:"light", date:"modified", dateformat:"mmm 0DDth YYYY")
+<!-- Kerman -->
 <$set name=templateTiddler value=<<__template__>> emptyValue="$:/plugins/kookma/timelines/templates/kerman" >
 <div class="kk-tl-kerman kk-tl-kerman-$class$">
 <ul>

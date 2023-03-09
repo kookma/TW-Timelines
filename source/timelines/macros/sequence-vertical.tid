@@ -1,8 +1,9 @@
-tags: 
-title: $:/plugins/kookma/timelines/macros/gilan
+tags: $:/tags/Macro
+title: $:/plugins/kookma/timelines/macros/sequence-vertical
 type: text/vnd.tiddlywiki
 
-\define __tl-gilan(filter, limit:10, template:"", footer:"footer", class, date:"modified")
+\define sequence-vertical(filter, limit:10, template:"", footer:"footer", class, date:"modified")
+<!-- The code name for sequence-vertical is gilan -->
 <$set name=templateTiddler value=<<__template__>> emptyValue="$:/plugins/kookma/timelines/templates/gilan" >
 <div class="kk-tl-gilan">
 

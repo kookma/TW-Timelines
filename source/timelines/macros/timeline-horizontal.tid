@@ -1,14 +1,20 @@
-tags: 
-title: $:/plugins/kookma/timelines/macros/ilam
+tags: $:/tags/Macro
+title: $:/plugins/kookma/timelines/macros/timeline-horizontal
 type: text/vnd.tiddlywiki
 
-\define __tl-ilam(filter, limit:10, template:"", footer:"footer", class, date:"modified", stateTiddler:"", dateformat:"YYYY")
+\define timeline-horizontal(filter, limit:10, template:"", footer:"footer", class, date:"modified", stateTiddler:"", dateformat:"YYYY")
+\import [all[tiddlers+shadows]tag[$:/tags/Timelines/Ilam]]
+
+<!-- timeline-horizontal with Ilam as code name creates a horizontal timeline -->
+
 <!-- dateformat here is a hidden argument. It can be changed to "0DD mmm YYYY" if the eventlength is set to 32.
 See $:/plugins/kookma/timelines/macros/ilamleft-pos -->
 
+\define __tlIlam-changeit() <$action-setfield $tiddler=<<container>> text=<<currentTiddler>>/>
+
 <$set name=filter filter="[subfilter<__filter__>] :sort:date[get<__date__>] :and[limit[$limit$]]">
-<$set name=container value=<<qualify """$:/state-tl/ilam-$stateTiddler$""">> emptyValue=<<__tlIlam-CreateStateTiddler>> >
-<$set name=selected-item  value={{{[<container>get[text]] ~[enlist<filter>first[]]}}} >
+<$let container=<<qualify """$:/state-tl/ilam-$stateTiddler$""">>  
+      selected-item={{{[<container>get[text]] ~[enlist<filter>first[]]}}} >
 
 <div class="kk-tl-ilam kk-tl-ilam-container">
 <div class="dates">
@@ -79,29 +85,6 @@ Next
 </div>
 </$set>
 
+</$let>
 </$set>
-</$set>
-</$set>
-\end
-
-
-\define __tlIlam-changeit() <$action-setfield $tiddler=<<container>> text=<<currentTiddler>>/>
-
-
-\define __tlIlam_ShowEventDate()
-<$list filter="[<__dateformat__>match[YYYY]]" variable=ignore>
-<$view field=<<__date__>> format=date template="YYYY" /> 
-</$list>
-<$list filter="[<__dateformat__>match[0DD mmm YYYY]]" variable=ignore>
-<$view field=<<__date__>> format=date template="0DD mmm YYYY" /> 
-</$list>
-<$list filter="[<__dateformat__>match[mmm DDth]]" variable=ignore>
-<$view field=<<__date__>> format=date template="mmm DDth" /> 
-</$list>
-\end
-
-\define __tlIlam-CreateStateTiddler() 
-<!-- the statet tiddler intentionally prefixed with $:/state-tl to remain after closing the wiki. On 
-Node.js closing and reopening wiki will remove all $:/state tiddlers -->
-<<qualify """$:/state-tl/ilam-$(currentTiddler)$""">>
 \end
