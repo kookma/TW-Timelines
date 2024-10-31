@@ -1,7 +1,7 @@
 code-body: yes
-title: $:/plugins/kookma/timelines/templates/kerman
+title: $:/plugins/kookma/timelines/templates/timeline-vertical
 type: text/vnd.tiddlywiki
 
 <div class="item-title"><$link class="item-link"><$text text=<<currentTiddler>>/></$link></div>
 <div class="item-body"><$transclude mode="block"/></div>
-<div class="item-footer"><$view field=<<__footer__>>/></div>
+<div class="item-footer"><$view field=<<footer>>/></div>

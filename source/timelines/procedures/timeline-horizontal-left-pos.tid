@@ -1,0 +1,47 @@
+tags: 
+title: $:/plugins/kookma/timelines/procedures/timeline-horizontal-left-pos
+type: text/vnd.tiddlywiki
+
+\procedure tltimeline-horizontal-ItemSpace() 120 <!-- the space at the left of each item used to calculate the position of items-->
+\procedure tltimeline-horizontal-EventLength()
+<!--this calculate the extra pixels required for events date appears on the timeline. Each format has a certain width which has to be added to calculate the length of filling line -->
+	<%if [<dateformat>match[YYYY]] %>
+		16
+	<%elseif [<dateformat>match[0DD mmm YYYY]] %>
+		32
+	<%elseif [<dateformat>match[mmm DDth]]%>
+		20
+	<%endif%>
+\end
+
+
+\procedure tltimeline-horizontal-LeftPosition() 
+<!--calculates the left position of each item -->
+<$list filter="[list<container>allbefore:include<currentTiddler>count[]multiply<tltimeline-horizontal-ItemSpace>]" variable="leftpos">
+left:<<leftpos>>px;
+</$list>
+\end
+
+\procedure tltimeline-horizontal-LineLength() 
+<!--calculates the length of filling line -->
+<!-- number of items displayed on screen: 3 -->
+
+<$wikify name=txt-length text=<<tltimeline-horizontal-EventLength>> >
+<!-- selected item is in the container list -->
+<$list filter="[list<container>allbefore:include<selected-item>limit[1]]">
+<$set name=length filter="[list<container>allbefore:include<selected-item>count[]multiply<tltimeline-horizontal-ItemSpace>]">
+width: <<length>>px;
+</$set>
+</$list>
+
+<!-- container items are after selected item -->
+<$set name=last-item filter="[list<container>last[]]" >
+<$list filter="[subfilter<filter>allafter<last-item>match<selected-item>]">
+<$set name=length filter="[[3]multiply<tltimeline-horizontal-ItemSpace>add<txt-length>]">
+width: <<length>>px;
+</$set>
+</$list>
+</$set>
+
+</$wikify>
+\end

@@ -1,5 +1,0 @@
-code-body: yes
-title: $:/plugins/kookma/timelines/templates/tehran
-type: text/vnd.tiddlywiki
-
-<$transclude mode=block/>

@@ -1,0 +1,117 @@
+tags: $:/tags/Global
+title: $:/plugins/kookma/timelines/procedures/timeline-horizontal
+type: text/vnd.tiddlywiki
+
+\procedure timeline-horizontal(filter, limit:10, date:"modified", footer:"footer", template:"", class:"primary",  dateformat:"YYYY", stateTiddler:"", pageEntries:"3")
+\import [[$:/plugins/kookma/timelines/procedures/timeline-horizontal-left-pos]]
+\whitespace trim
+
+\procedure tltimeline-horizontal-changeit()
+	<$action-setfield $tiddler=<<container>> text=<<currentTiddler>>/>
+\end tltimeline-horizontal-changeit
+
+\procedure tltimeline-horizontal-PullPrevious()
+	<!-- number of items displayed on screen: item-per-page -->
+	<%if [enlist<filter>allbefore:include<first-item>last<item-per-page>count[]compare:integer:gteq<item-per-page>] %>
+		<$action-listops $tiddler=<<container>> $filter="[enlist<filter>allbefore:include<first-item>last<item-per-page>] :else[enlist<filter>first<item-per-page>]"/> 
+	<%else%>
+		<$action-listops $tiddler=<<container>> $filter="[enlist<filter>first<item-per-page>]"/> 
+	<%endif%>
+	<$action-setfield $tiddler=<<container>> text={{{ [list<container>first[1]] }}}/>
+\end tltimeline-horizontal-PullPrevious
+
+\procedure tltimeline-horizontal-PullNext()
+	<%if [enlist<filter>allafter:include<last-item>first<item-per-page>count[]compare:integer:gteq<item-per-page>] %>
+		<$action-listops $tiddler=<<container>> $filter="[enlist<filter>allafter:include<last-item>first<item-per-page>] :else[enlist<filter>last<item-per-page>]"/> 
+	<%else%>
+		<$action-listops $tiddler=<<container>> $filter="[enlist<filter>last<item-per-page>]"/> 
+	<%endif%>
+	<$action-setfield $tiddler=<<container>> text={{{ [list<container>first[1]] }}}/>
+\end tltimeline-horizontal-PullNext
+
+\procedure tltimeline-horizontal_ShowEventDate()
+	<span class="tl-date">
+	<%if [<dateformat>match[YYYY]] %>
+		<$view field=<<date>> format=date template="YYYY" /> 
+	<%elseif [<dateformat>match[0DD mmm YYYY]] %>
+		<$view field=<<date>> format=date template="0DD mmm YYYY" /> 
+	<%elseif [<dateformat>match[mmm DDth]] %>
+		<$view field=<<date>> format=date template="mmm DDth" /> 
+	<%endif%>
+	</span>
+\end tltimeline-horizontal_ShowEventDate
+
+
+<!-- main body of timeline-horizontal --------------->
+
+<$set name=filter filter="[subfilter<filter>] :sort:date[get<date>] :and[limit<limit>]">
+<$let item-per-page = <<pageEntries>>
+      container     =`${[<qualify "$:/state/timelines/timeline-horizontal">][<stateTiddler>] :filter[!is[blank]] +[join[-]]}$` 
+			selected-item = {{{ [<container>get[text]]    }}}
+			first-item    = {{{ [list<container>first[1]] }}}
+			last-item     = {{{ [list<container>last[1]]  }}}		
+			>
+
+<div class="kk-tl-timeline-horizontal kk-tl-timeline-horizontal-container">
+<div class="dates">
+<div class="line">
+
+<ol>
+
+<$list filter="[list<container>]" variable="entry" emptyMessage="Press ''prev/next'' button to start the timeline"> <!-- main list -->
+
+<$list filter="[enlist<filter>allbefore<selected-item>match<entry>]"><!-- all before selected item -->
+<$wikify name="stleft" text=<<tltimeline-horizontal-LeftPosition>> >
+<li>
+<$button class="tc-btn-invisible date date--older-event" style=<<stleft>> actions=<<tltimeline-horizontal-changeit>> >
+<<tltimeline-horizontal_ShowEventDate>>
+</$button>
+</li>
+</$wikify>
+</$list>
+
+<$list filter="[<entry>match<selected-item>]"><!-- the selected item -->
+<$wikify name="stleft" text=<<tltimeline-horizontal-LeftPosition>> >
+<li>
+<$button class="tc-btn-invisible date date--selected" style=<<stleft>> actions=<<tltimeline-horizontal-changeit>> >
+<<tltimeline-horizontal_ShowEventDate>> 
+</$button>
+</li>
+</$wikify>
+</$list>
+
+<$list filter="[enlist<filter>allafter<selected-item>match<entry>]"><!-- all after selected item -->
+<$wikify name="stleft" text=<<tltimeline-horizontal-LeftPosition>> >
+<$button class="tc-btn-invisible date" style=<<stleft>> >
+<<tltimeline-horizontal-changeit>><<tltimeline-horizontal_ShowEventDate>> 
+</$button>
+</$wikify>
+</$list>
+
+</$list><!--- main list -->
+
+</ol>
+
+<$wikify name="stlength" text=<<tltimeline-horizontal-LineLength>> ><!-- the filling line -->
+<span class="filling-line" style=<<stlength>> aria-hidden="xtrue"></span>
+</$wikify>
+
+</div><!--line-->
+</div><!-- dates-->
+
+<ul><!-- arrow btns-->
+<$button class="tc-btn-invisible text-replace navigation navigation--prev" actions=<<tltimeline-horizontal-PullPrevious>> tag="li">Prev</$button>
+<$button class="tc-btn-invisible text-replace navigation navigation--next" actions=<<tltimeline-horizontal-PullNext>> tag="li">Next</$button>
+</ul>
+</div><!-- container-->
+
+<div class=`kk-tl-timeline-horizontal-content kk-tl-timeline-horizontal-$(class)$`><!--display contents-->
+<$tiddler tiddler=<<selected-item>> >
+	<$transclude $tiddler={{{ [<template>!is[blank]] :else[[$:/plugins/kookma/timelines/templates/timeline-horizontal]] }}} $mode="block"/>
+</$tiddler>
+</div>
+
+
+</$let>
+</$set>
+\end

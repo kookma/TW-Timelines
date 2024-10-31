@@ -1,6 +1,0 @@
-code-body: yes
-title: $:/plugins/kookma/timelines/templates/ilam
-type: text/vnd.tiddlywiki
-
-<h1><$transclude field="title"/></h1>
-<$transclude mode="block"/>

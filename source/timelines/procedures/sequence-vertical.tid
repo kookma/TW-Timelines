@@ -1,0 +1,15 @@
+tags: $:/tags/Global
+title: $:/plugins/kookma/timelines/procedures/sequence-vertical
+type: text/vnd.tiddlywiki
+
+\procedure sequence-vertical(filter, limit:10, date:"modified", footer:"footer", template:"", class:"primary" )
+<div class="kk-tl-vertical-sequence">
+
+<$list filter="[subfilter<filter>limit<limit>]" emptyMessage="Timeline: no tiddler found or wrong filter is passed!" >
+	<div class=`item kk-tl-vertical-sequence-$(class)$`> <!--display content-->
+		<$transclude $tiddler={{{ [<template>!is[blank]] :else[[$:/plugins/kookma/timelines/templates/sequence-vertical]] }}} $mode="block"/>
+	</div>
+</$list>
+
+</div>
+\end

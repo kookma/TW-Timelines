@@ -4,6 +4,7 @@ type: text/vnd.tiddlywiki
 
 Full change log  https://kookma.github.io/TW-Timelines/#ChangeLog
 
+* ''1.5.0'' -- 2024.10.31 -- update to Tiddlywiki 5.3.5 and Gatha development studio
 * ''1.2.0'' -- 2022.11.12 -- update to Tiddlywiki 5.2.3
 * ''1.0.0'' -- 2020.08.09 -- stable release
 * ''0.6.0'' -- 2020.07.31 -- beta release

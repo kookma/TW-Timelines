@@ -3,49 +3,49 @@
   --max-width-large: 800px;
 }
 
-.kk-tl-ilam {
+.kk-tl-timeline-horizontal {
     position: relative;
     height: 100px;
     max-width: var(--max-width-large);
 }
 
-.kk-tl-ilam-container {
+.kk-tl-timeline-horizontal-container {
     width: calc(100% - 1.25em);
     margin-left: auto;
     margin-right: auto
 }
 
 /* event content */
-.kk-tl-ilam-content {
+.kk-tl-timeline-horizontal-content {
   max-width: var(--max-width-large);
   margin-left: auto;
   margin-right: auto
 }
 
 /*added later*/
-.cl.kk-tl-ilam {
+.cl.kk-tl-timeline-horizontal {
  background-color: hsl(0, 0%, 97%);
 }
-.kk-tl-ilam *::before,
-.kk-tl-ilam *::after,
-.kk-tl-ilam *{
+.kk-tl-timeline-horizontal *::before,
+.kk-tl-timeline-horizontal *::after,
+.kk-tl-timeline-horizontal *{
   box-sizing:border-box;
 }
 
 /* list ordered and unordered */
-.kk-tl-ilam ul, 
-.kk-tl-ilam ol{
+.kk-tl-timeline-horizontal ul, 
+.kk-tl-timeline-horizontal ol{
   list-type: none;
 }
-.kk-tl-ilam ul{
+.kk-tl-timeline-horizontal ul{
     font-size:0.85em
 }
-.kk-tl-ilam li{
+.kk-tl-timeline-horizontal li{
 display:inline-block
 }
 
 /*line axis events placed on that*/
-.kk-tl-ilam .line {
+.kk-tl-timeline-horizontal .line {
     position: absolute;
     z-index: 1;
       width:100%;
@@ -57,7 +57,7 @@ display:inline-block
 }
 
 /* filling line */
-.kk-tl-ilam .filling-line {
+.kk-tl-timeline-horizontal .filling-line {
     position: absolute;
     z-index: 1;
     left: 0;
@@ -73,15 +73,15 @@ display:inline-block
 }
 
 /* dates */
-.kk-tl-ilam .dates {
+.kk-tl-timeline-horizontal .dates {
     position: relative;
     height: 100%;
     margin: 0 40px;
     overflow: hidden
 }
 
-.kk-tl-ilam .dates::after,
-.kk-tl-ilam .dates::before {
+.kk-tl-timeline-horizontal .dates::after,
+.kk-tl-timeline-horizontal .dates::before {
     content: '';
     position: absolute;
     z-index: 2;
@@ -90,18 +90,18 @@ display:inline-block
     width: 20px
 }
 
-.kk-tl-ilam .dates::before {
+.kk-tl-timeline-horizontal .dates::before {
     left: 0;
     background: linear-gradient(to right, hsl(0, 0%, 100%), hsla(0, 0%, 100%, 0));
 }
 
-.kk-tl-ilam .dates::after {
+.kk-tl-timeline-horizontal .dates::after {
     right: 0;
     background: linear-gradient(to left, hsl(0, 0%, 100%), hsla(0, 0%, 100%, 0));
 }
 
 /* date item */
-.kk-tl-ilam .date {
+.kk-tl-timeline-horizontal .date {
     position: absolute;
     bottom: 0; 
     z-index: 2;
@@ -113,7 +113,7 @@ display:inline-block
     text-decoration: none
 }
 
-.kk-tl-ilam .date::after {
+.kk-tl-timeline-horizontal .date::after {
     content: '';
     position: absolute;
  /*   left: 50%;
@@ -131,28 +131,35 @@ display:inline-block
     transition: background-color 0.3s, border-color .3s
 }
 
-.kk-tl-ilam .date:hover::after {
+.kk-tl-timeline-horizontal .date:hover::after {
     background-color: hsl(74, 93%, 32%);
     border-color: hsl(74, 93%, 32%);
 }
 
 /* date older event */
-.kk-tl-ilam .date--older-event::after {
+.kk-tl-timeline-horizontal .date--older-event::after {
     border-color: hsl(74, 93%, 32%);
 }
 
 /* date selected */
-.kk-tl-ilam .date--selected {
+.kk-tl-timeline-horizontal .date--selected {
     pointer-events: none
 }
 
-.kk-tl-ilam .date--selected::after {
+.kk-tl-timeline-horizontal .date--selected::after {
     background-color: hsl(74, 93%, 32%);
     border-color: hsl(74, 93%, 32%);
 }
 
+/* adjust the date position over bullet */
+.kk-tl-timeline-horizontal .date span.tl-date{
+    position: absolute;
+    left: -5px; 
+	bottom: 15px;
+}
+
 /* navigation buttons */
-.kk-tl-ilam .navigation {
+.kk-tl-timeline-horizontal .navigation {
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -168,7 +175,7 @@ display:inline-block
     transition: border-color 0.3s
 }
 
-.kk-tl-ilam .navigation::after {
+.kk-tl-timeline-horizontal .navigation::after {
     content: '';
     position: absolute;
     height: 16px;
@@ -180,11 +187,11 @@ display:inline-block
     transform: translateX(-50%) translateY(-50%);
 }
 
-.kk-tl-ilam .navigation:hover {
+.kk-tl-timeline-horizontal .navigation:hover {
     border-color: hsl(74, 93%, 32%)
 }
 
-.kk-tl-ilam .navigation--prev {
+.kk-tl-timeline-horizontal .navigation--prev {
     left: 0;
     -webkit-transform: translateY(-50%) rotate(180deg);
     -ms-transform: translateY(-50%) rotate(180deg);
@@ -192,12 +199,12 @@ display:inline-block
 }
 
 
-.kk-tl-ilam .navigation--next {
+.kk-tl-timeline-horizontal .navigation--next {
     right: 0
 }
 
 /*text replace*/
-.kk-tl-ilam .text-replace {
+.kk-tl-timeline-horizontal .text-replace {
     overflow: hidden;
     color: transparent;
     text-indent: 100%;
@@ -205,5 +212,5 @@ display:inline-block
 }
 
 /* remove blue border from buttons */
-.kk-tl-ilam .tc-btn-invisible { outline:none; }
+.kk-tl-timeline-horizontal .tc-btn-invisible { outline:none; }
 

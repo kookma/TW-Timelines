@@ -1,12 +1,12 @@
 /* Lauren Chilcote acknowledged for this stylesheet */
 
-.kk-tl-gilan {
+.kk-tl-vertical-sequence {
   min-width: 160px;
   max-width: 480px;
   margin: auto;
 }
 
-.kk-tl-gilan .item {
+.kk-tl-vertical-sequence .item {
   font-size: 1em;
   line-height: 1.75em;
   border-top: 3px solid;
@@ -21,7 +21,7 @@
   /*color: #34435E;*/
 }
 
-.kk-tl-gilan .item:before {
+.kk-tl-vertical-sequence .item:before {
   content: counter(section);
   position: absolute;
   border-radius: 50%;
@@ -35,44 +35,44 @@
   font-size: 1.2rem;
 }
 
-.kk-tl-gilan .item:nth-child(odd) {
+.kk-tl-vertical-sequence .item:nth-child(odd) {
   border-right: 3px solid;
   padding-left: 0;
 }
-.kk-tl-gilan .item:nth-child(odd):before {
+.kk-tl-vertical-sequence .item:nth-child(odd):before {
   left: 100%;
   margin-left: -20px;
 }
 
-.kk-tl-gilan .item:nth-child(even) {
+.kk-tl-vertical-sequence .item:nth-child(even) {
   border-left: 3px solid;
   padding-right: 0;
 }
-.kk-tl-gilan .item:nth-child(even):before {
+.kk-tl-vertical-sequence .item:nth-child(even):before {
   right: 100%;
   margin-right: -20px;
 }
 
-.kk-tl-gilan .item:first-child {
+.kk-tl-vertical-sequence .item:first-child {
   border-top: 0;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
 
-.kk-tl-gilan .item:last-child {
+.kk-tl-vertical-sequence .item:last-child {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.kk-tl-gilan .item-footer{
+.kk-tl-vertical-sequence .item-footer{
     margin-top: 10px;
     font-style: italic;
     margin-right: 20px
 }
 
-.kk-tl-gilan .item:nth-child(even) .item-footer{
+.kk-tl-vertical-sequence .item:nth-child(even) .item-footer{
     text-align: left;
 }
-.kk-tl-gilan .item:nth-child(odd) .item-footer{
+.kk-tl-vertical-sequence .item:nth-child(odd) .item-footer{
     text-align: right;
 }

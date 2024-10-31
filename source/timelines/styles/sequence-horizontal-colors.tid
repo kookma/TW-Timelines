@@ -1,0 +1,26 @@
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/timelines/styles/sequence-horizontal-colors
+type: text/vnd.tiddlywiki
+
+<$list filter="[all[shadows+tiddlers]prefix[$:/plugins/kookma/timelines/styles/colors/]]" variable="type">
+
+<$vars 
+ selector={{{[<type>getindex[class]addprefix[.kk-tl-horizontal-sequence-]]}}} 
+ color={{{[<type>getindex[color]]}}} 
+ background-color={{{[<type>getindex[background]]}}} 
+ border-color={{{[<type>getindex[border]]}}} 
+ link-color={{{[<type>getindex[link]]}}} 
+ light-background={{{[<type>getindex[light-background]]}}} 
+ >
+ 
+<<selector>> .kk-tl-horizontal-sequence-content{ background:<<background-color>>; color:<<color>>;}
+<<selector>> li {color:<<color>>;background:<<background-color>>;}
+<<selector>> .kk-tl-horizontal-sequence-active {background:<<background-color>>;}
+<<selector>> .kk-tl-horizontal-sequence-active~li {color:<<color>>; background:<<light-background>>;}
+
+</$vars>
+</$list>
+
+/*overwrite light theme for horizontal-sequence*/
+.kk-tl-horizontal-sequence-light li {background:#d7d8d8;}
+.kk-tl-horizontal-sequence-light .kk-tl-horizontal-sequence-active {background:#e8e9e9;}

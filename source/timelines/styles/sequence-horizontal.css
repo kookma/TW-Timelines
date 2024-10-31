@@ -1,0 +1,27 @@
+.kk-tl-horizontal-sequence{
+	width:60%;
+	margin: 10px auto;
+	box-sizing:border-box;
+}
+
+.kk-tl-horizontal-sequence-content{
+	padding:15px;
+	min-height:140px;
+	/* border-width:1px;
+	border-style:dotted; */
+}
+
+.kk-tl-horizontal-sequence ul{
+	padding:0;
+	text-align:center;
+}
+.kk-tl-horizontal-sequence ul li {
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+	margin: 8px 5px;
+}

@@ -1,10 +1,10 @@
-/*The Kerman main stylesheet*/
-.kk-tl-kerman{
+/*The timeline-vertical main stylesheet*/
+.kk-tl-timeline-vertical{
     margin:0 10%;
     padding: 10px 0 40px 60px
 }
 
-.kk-tl-kerman > ul{
+.kk-tl-timeline-vertical > ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -13,11 +13,11 @@
     top:0
 }
 
-.kk-tl-kerman > ul:last-of-type{
+.kk-tl-timeline-vertical > ul:last-of-type{
     top:40px
  }
 
-.kk-tl-kerman > ul:before{
+.kk-tl-timeline-vertical > ul:before{
     content: "";
     display: block;
     width: 0;
@@ -30,7 +30,7 @@
 }
 
 
-.kk-tl-kerman > ul > li{
+.kk-tl-timeline-vertical > ul > li{
     margin: 20px 60px 60px;
     position: relative;
     padding: 10px 20px;
@@ -40,7 +40,7 @@
 }
 
 
-.kk-tl-kerman > ul > li > span{
+.kk-tl-timeline-vertical > ul > li > span{
     content: "";
     display: block;
     width: 0;
@@ -53,8 +53,8 @@
 }
 
 
-.kk-tl-kerman > ul > li > span:before,
-.kk-tl-kerman > ul > li > span:after{
+.kk-tl-timeline-vertical > ul > li > span:before,
+.kk-tl-timeline-vertical > ul > li > span:after{
     content: "";
     display: block;
     width: 16px;
@@ -67,19 +67,19 @@
 }
 
 
-.kk-tl-kerman .item-title{
+.kk-tl-timeline-vertical .item-title{
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 5px
 }
 
 
-.kk-tl-kerman .item-body:first-letter{
+.kk-tl-timeline-vertical .item-body:first-letter{
   text-transform: capitalize;
 	line-height: 1.7
 }
 
-.kk-tl-kerman .item-footer{
+.kk-tl-timeline-vertical .item-footer{
     margin-top: 10px;
     text-transform: capitalize;
     font-style: italic;
@@ -88,21 +88,21 @@
 }
 
 
-.kk-tl-kerman .item-timedate span{
+.kk-tl-timeline-vertical .item-timedate span{
     position: absolute;
     font-size:0.9rem;
     font-weight: bold;
 }
 /*   */
 
-.kk-tl-kerman .item-link{
+.kk-tl-timeline-vertical .item-link{
     font-weight:700;
 }
 
 
 /* date time */
-.kk-tl-kerman .item-timedate span:first-child {left:-6.5rem; top:-12px;}
-.kk-tl-kerman .item-timedate span:last-child  {left:-4.6rem; bottom:-9px;}
+.kk-tl-timeline-vertical .item-timedate span:first-child {left:-6.5rem; top:-12px;}
+.kk-tl-timeline-vertical .item-timedate span:last-child  {left:-4.6rem; bottom:-9px;}
 
-.kk-tl-kerman > ul > li > span:before{top:-10px}
-.kk-tl-kerman > ul > li > span:after{bottom:-10px;}
+.kk-tl-timeline-vertical > ul > li > span:before{top:-10px}
+.kk-tl-timeline-vertical > ul > li > span:after{bottom:-10px;}

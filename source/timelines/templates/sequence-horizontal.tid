@@ -1,0 +1,5 @@
+code-body: yes
+title: $:/plugins/kookma/timelines/templates/sequence-horizontal
+type: text/vnd.tiddlywiki
+
+<$transclude $mode=block/>

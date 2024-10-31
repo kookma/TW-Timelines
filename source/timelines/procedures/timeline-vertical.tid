@@ -1,0 +1,38 @@
+tags: $:/tags/Global
+title: $:/plugins/kookma/timelines/procedures/timeline-vertical
+type: text/vnd.tiddlywiki
+
+\procedure timeline-vertical(filter, limit:10, date:"modified", footer:"footer", template:"", class:"",  dateformat:"YYYY")
+	\procedure tltimeline-vertical_ShowEventDate-year()
+	<%if [<dateformat>search[YYYY]] %>
+		<$view field=<<date>> format=date template="YYYY"/>
+	<%endif%>
+	\end tltimeline-vertical_ShowEventDate-year
+
+	\procedure tltimeline-vertical_ShowEventDate-month()
+	<%if [<dateformat>search[mmm DDth]] %>
+		<$view field=<<date>> format=date template="mmm DDth"/>
+	<%endif%>
+	\end tltimeline-vertical_ShowEventDate-month
+
+
+	<!-- timeline-vertical -->
+	<$set name=templateTiddler value=<<template>> emptyValue="$:/plugins/kookma/timelines/templates/timeline-vertical" >
+	<div class=`kk-tl-timeline-vertical kk-tl-timeline-vertical-$(class)$`>
+	<ul>
+		<$list filter="[subfilter<filter>] :sort:date[get<date>] :and[limit<limit>]" emptyMessage="Timeline: no tiddler found or wrong filter is passed!" >
+		<li>
+			<span></span><!--display content-->
+
+			<$transclude $tiddler=<<templateTiddler>> $mode="block"/>
+
+			<div class="item-timedate">
+				<span><<tltimeline-vertical_ShowEventDate-month>></span>
+				<span><<tltimeline-vertical_ShowEventDate-year>></span>
+			</div>
+		</li>
+		</$list>
+	</ul>
+	</div>
+\end timeline-vertical
+

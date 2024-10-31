@@ -1,11 +1,11 @@
 tags: $:/tags/Stylesheet
-title: $:/plugins/kookma/timelines/styles/kerman-colors.css
+title: $:/plugins/kookma/timelines/styles/timeline-vertical-colors.css
 type: text/vnd.tiddlywiki
 
 <$list filter="[all[shadows+tiddlers]prefix[$:/plugins/kookma/timelines/styles/colors/]] -[<currentTiddler>]" variable="type">
 
 <$vars 
- selector={{{[<type>getindex[class]addprefix[.kk-tl-kerman-]]}}} 
+ selector={{{[<type>getindex[class]addprefix[.kk-tl-timeline-vertical-]]}}} 
  color={{{[<type>getindex[color]]}}} 
  background-color={{{[<type>getindex[background]]}}} 
  border-color={{{[<type>getindex[border]]}}} 

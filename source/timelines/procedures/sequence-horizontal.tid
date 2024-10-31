@@ -1,0 +1,35 @@
+tags: $:/tags/Global
+title: $:/plugins/kookma/timelines/procedures/sequence-horizontal
+type: text/vnd.tiddlywiki
+
+\procedure sequence-horizontal(filter, limit:10, date:"modified", footer:"footer", template:"", class:"promary", stateTiddler:"")
+
+	\procedure tlhorizontal-sequence-changeit() 
+	<$action-setfield $tiddler=<<container>> text=<<entry>>/>
+	\end tlhorizontal-sequence-changeit
+
+	<$let container     =`${[<qualify "$:/state/timelines/sequence-horizontal">][<stateTiddler>] :filter[!is[blank]] +[join[-]]}$` 
+	      selected-item = {{{ [<container>get[text]] :else[subfilter<filter>first[]] }}}   >
+
+		<div class=`kk-tl-horizontal-sequence kk-tl-horizontal-sequence-$(class)$`>
+		
+			<!-- display the selected tiddler in the sequence -->
+			<div class="kk-tl-horizontal-sequence-content"><!-- display content of selected tiddler -->
+				<$list filter="[<container>get[text]] ~[<selected-item>]" template={{{ [<template>!is[blank]] :else[[$:/plugins/kookma/timelines/templates/sequence-horizontal]]  }}} />
+			</div>
+
+
+			<!-- create sequence buttons -->
+			<ul>
+				<$list filter="[subfilter<filter>limit<limit>]" variable="entry"><!-- main list -->
+					<$button class=`${ [[tc-btn-invisible]] [<entry>match<selected-item>then[kk-tl-horizontal-sequence-active]] :and[join[ ]] }$` actions=<<tlhorizontal-sequence-changeit>> tag="li">
+						<$count filter='[subfilter<filter>allbefore:include<entry>]'/>
+					</$button>
+				</$list>
+			</ul>
+
+		</div>
+	</$let>
+\end sequence-horizontal
+
+

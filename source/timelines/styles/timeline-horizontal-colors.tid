@@ -1,11 +1,11 @@
 tags: $:/tags/Stylesheet
-title: $:/plugins/kookma/timelines/styles/gilan-colors.css
+title: $:/plugins/kookma/timelines/styles/timeline-horizontal-colors
 type: text/vnd.tiddlywiki
 
 <$list filter="[all[shadows+tiddlers]prefix[$:/plugins/kookma/timelines/styles/colors/]]" variable="type">
 
 <$vars 
- selector={{{[<type>getindex[class]addprefix[.kk-tl-gilan-]]}}} 
+ selector={{{[<type>getindex[class]addprefix[.kk-tl-timeline-horizontal-]]}}} 
  color={{{[<type>getindex[color]]}}} 
  background-color={{{[<type>getindex[background]]}}} 
  border-color={{{[<type>getindex[border]]}}} 
@@ -13,6 +13,7 @@ type: text/vnd.tiddlywiki
  light-background={{{[<type>getindex[light-background]]}}} 
  >
  
-<<selector>> { color:<<color>>;}
+<<selector>> { background:<<background-color>>; color:<<color>>;}
+<<selector>> {padding: 15px 10px; border-radius:2px;}
 </$vars>
 </$list>

@@ -1,11 +1,11 @@
 tags: $:/tags/Stylesheet
-title: $:/plugins/kookma/timelines/styles/ilam-colors.css
+title: $:/plugins/kookma/timelines/styles/sequence-vertical-colors
 type: text/vnd.tiddlywiki
 
 <$list filter="[all[shadows+tiddlers]prefix[$:/plugins/kookma/timelines/styles/colors/]]" variable="type">
 
 <$vars 
- selector={{{[<type>getindex[class]addprefix[.kk-tl-ilam-]]}}} 
+ selector={{{[<type>getindex[class]addprefix[.kk-tl-vertical-sequence-]]}}} 
  color={{{[<type>getindex[color]]}}} 
  background-color={{{[<type>getindex[background]]}}} 
  border-color={{{[<type>getindex[border]]}}} 
@@ -13,7 +13,6 @@ type: text/vnd.tiddlywiki
  light-background={{{[<type>getindex[light-background]]}}} 
  >
  
-<<selector>> { background:<<background-color>>; color:<<color>>;}
-<<selector>> {padding: 15px 10px; border-radius:2px;}
+<<selector>> { color:<<color>>;}
 </$vars>
 </$list>
