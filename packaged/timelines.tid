@@ -3,7 +3,7 @@ core-version: >=5.3.5
 description: Graphical representation of a period of time
 list: readme license history
 name: Timelines
-packaged-by: Gatha on 31st October 2024, 21:59:27
+packaged-by: Gatha on 16th November 2024, 18:48:43
 plugin-type: plugin
 source: https://github.com/kookma/TW-Timelines
 stability: STABILITY_2_STABLE
